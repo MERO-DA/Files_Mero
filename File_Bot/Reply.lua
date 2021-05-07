@@ -1,21 +1,6 @@
 local function Reply(msg)
 local text = msg.content_.text_
 if not database:get(bot_id..'Reply:Status'..msg.chat_id_) then
-if SudoBot(msg) then
-if text == 'هلو' or text == 'هيلو' or text == 'هلاو' then
-local texting = {'هلا بتاج راسي 🤤💘','هلااا بمطوري العشق 💞','هلا بحياتي المطور'}
-send(msg.chat_id_, msg.id_,'['..TextReply..']')
-return false
-end
-if text == 'انجب' or text == 'نجب' or text == 'أنجب' or text == 'نجبب' or text == 'جب' or text == 'انجبي' then
-local texting = {'ع راسي حبيبي المطور 💞','تدلل تاج راسي 🙈',' تأمرني امر حبيبي المطور 💕'}
-send(msg.chat_id_, msg.id_,'['..TextReply..']')
-return false
-end
------------------
-end --- معليك بيها
------------------
-if not SudoBot(msg) then
 if text == 'هلو' then
 TextReply = 'هـلاوات يحات مـسيوو وايد💘😻'
 send(msg.chat_id_, msg.id_,'['..TextReply..']')
