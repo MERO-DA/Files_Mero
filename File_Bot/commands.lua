@@ -506,7 +506,7 @@ Text = [[
 *⋄⤂ تنظيف المشتركين*
 *⋄⤂ تنظيف الكروبات*
 *ٴ— — — — — — — — — — — — — —*
-[⍆ - MeRo TeMe .](t.me/YYYDR)
+[- MeRo TeMe .](t.me/YYYDR)
 ]]
 send(msg.chat_id_, msg.id_,(help_text or Text)) 
 return false
