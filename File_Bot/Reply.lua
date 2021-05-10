@@ -2,14 +2,13 @@ local function Reply(msg)
 local text = msg.content_.text_
 if not database:get(bot_id..'Reply:Status'..msg.chat_id_) then
 if DevMEROW(msg) then
-if text == 'هلو' then 
-send(msg.chat_id_, msg.id_,' *هلا بمطوري شوكت تحدثني* ')
+if text == 'هلو' or text == 'هيلو' or text == 'هلاو' then
+local texting = {'هلا بتاج راسي 🤤💘','هلااا بمطوري العشق 💞','هلا بحياتي المطور'}
+send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
 end
-if text == 'مرحبا' then 
-send(msg.chat_id_, msg.id_,' *مراحب يحبيبي المطور الغالي* ')
-end
-if text == 'شلونك' then 
-send(msg.chat_id_, msg.id_,' *تمام وانت شلونك مطوري العزيز* ')
+if text == 'انجب' or text == 'نجب' or text == 'أنجب' or text == 'نجبب' or text == 'جب' or text == 'انجبي' then
+local texting = {'ع راسي حبيبي المطور 💞','تدلل تاج راسي 🙈',' تأمرني امر حبيبي المطور 💕'}
+send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
 end
 end
 if not DevMEROW(msg) then
