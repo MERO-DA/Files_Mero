@@ -23,7 +23,7 @@ elseif markdown == 'html' then
 end 
 return s_api(url)  
 end
-if text == "all" or text == "@all" and CoSu(msg) then
+if text == "@all" and CoSu(msg) then
 if not database:get(bot_id..'Cick:all'..msg.chat_id_) then
 if database:get(bot_id.."FEEEM:all:Time"..msg.chat_id_..':'..msg.sender_user_id_) then  
 return 
