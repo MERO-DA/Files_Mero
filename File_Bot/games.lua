@@ -238,7 +238,7 @@ end
 ------------------------------------------------------------------------
 if text == ''..(database:get(bot_id..'Maany'..msg.chat_id_) or '')..'' and not database:get(bot_id..'Set:Maany'..msg.chat_id_) then
 if not database:get(bot_id..'Set:Maany'..msg.chat_id_) then
-send(msg.chat_id_, msg.id_,' *⋄︙الف مبروك لقد فزت* \n *⋄︙للعب مره اخره ارسل »{ معاني }*')
+send(msg.chat_id_, msg.id_,'*⋄︙الف مبروك لقد فزت*\n*⋄︙للعب مره اخره ارسل »{ معاني }*')
 database:incrby(bot_id..'NUM:GAMES'..msg.chat_id_..msg.sender_user_id_, 1)
 end
 database:set(bot_id..'Set:Maany'..msg.chat_id_,true)
@@ -255,7 +255,7 @@ return false
 end
 if database:get(bot_id..'Lock:Games'..msg.chat_id_) then
 database:del(bot_id..'Set:Aks'..msg.chat_id_)
-katu = {'باي','فهمت','موزين','اسمعك','احبك','موحلو','نضبف','حاره','ناصي','جوه','سريع','ونسه','طويل','سمين','ضعيف','مغلق','نايم','سكران','سبع','خلوق','رفيع','رخيص','افقي','امن','يمين','موافق','فقير','قبل','يعطي','مشمس','جزع','خيانة','حفظ','نحيل','يشتري','سلبي','حديث','يرفض','صديق','يربط','بشع','كره','مديح','سلام','سلام','كامل','متصل','يفسد','يابس','نصر','املس','اصلي','تعب','شجاع','رحت','عدل','نشيط','نشيط','شبعان','موعطشان','خوش ولد','اني','مضلل','هادئ'}
+katu = katu = {'باي','فهمت','موزين','اسمعك','احبك','موحلو','ضعيف','حاره','ناصي','جوه','سريع','ونسه','طويل','سمين','ضعيف','مغلق','نايم','سكران','سبع','خلوق','رفيع','رخيص','افقي','امن','يمين','موافق','فقير','قبل','يعطي','مشمس','جزع','خيانة','حفظ','نحيل','يشتري','سلبي','حديث','يرفض','صديق','يربط','بشع','كره','مديح','سلام','كامل','متصل','يفسد','يابس','نصر','املس','اصلي','تعب','شجاع','رحت','عدل','نشيط','شبعان','موعطشان','خوش ولد','مضلل','هادئ'}
 name = katu[math.random(#katu)]
 database:set(bot_id..'Set:Aks:Game'..msg.chat_id_,name)
 name = string.gsub(name,'باي','هلو')
@@ -317,7 +317,6 @@ name = string.gsub(name,'نشيط','كسول')
 name = string.gsub(name,'شبعان','جوعان')
 name = string.gsub(name,'موعطشان','عطشان')
 name = string.gsub(name,'خوش ولد','موخوش ولد')
-name = string.gsub(name,'اني','مطي')
 name = string.gsub(name,'مضلل','شفاف')
 name = string.gsub(name,'هادئ','عصبي')
 send(msg.chat_id_, msg.id_,' *⋄︙اسرع واحد يدز العكس* » {'..name..'}')
@@ -327,7 +326,7 @@ end
 ------------------------------------------------------------------------
 if text == ''..(database:get(bot_id..'Set:Aks:Game'..msg.chat_id_) or '')..'' and not database:get(bot_id..'Set:Aks'..msg.chat_id_) then
 if not database:get(bot_id..'Set:Aks'..msg.chat_id_) then
-send(msg.chat_id_, msg.id_,' *⋄︙الف مبروك لقد فزت* \n *⋄︙للعب مره اخره ارسل »{ العكس }*')
+send(msg.chat_id_, msg.id_,'*⋄︙الف مبروك لقد فزت*\n*⋄︙للعب مره اخره ارسل »{ العكس }*')
 database:incrby(bot_id..'NUM:GAMES'..msg.chat_id_..msg.sender_user_id_, 1)
 end
 database:set(bot_id..'Set:Aks'..msg.chat_id_,true)
@@ -562,7 +561,7 @@ name = string.gsub(name,'ساخر','ironic')
 name = string.gsub(name,'برج','tower')
 name = string.gsub(name,'صناعي','synthetic')
 name = string.gsub(name,'تاج','crown')
-name = string.gsub(name,'قرار','decisions')
+name = string.gsub(name,'قرار','decision')
 name = string.gsub(name,'ضيق','narrow')
 name = string.gsub(name,'يانصيب','lottery')
 name = string.gsub(name,'مجوهرات','jewellery')
