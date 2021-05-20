@@ -18,24 +18,24 @@ Text_Games = [[
 *ٴ— — — — — — — — — — — — — —*
  *⋄⤂الالعاب الخاصه بسورس*
 *ٴ— — — — — — — — — — — — — —*
- *⋄⤂لعبه البات ↞ لعبة المحيبس*
- *⋄⤂لعبه التخمين ↞ لعبة البحث*
- *⋄⤂لعبه الاسرع ↞ لعبة اسرع شخص*
- *⋄⤂لعبه السمايلات ↞ لعبة المطابقه*
- *⋄⤂لعبه المختلف ↞ لعبة الذكاء*
- *⋄⤂لعبه الرياضيات ↞ لعبة الارقام*
- *⋄⤂لعبه الانكليزي ↞ لعبة ترجمه*
- *⋄⤂لعبه الامثله ↞ لعبة تصحيح*
- *⋄⤂لعبه العكس ↞ لعبة عكس الكلمات*
- *⋄⤂لعبه الحزوره ↞لعبة التفكير*
- *⋄⤂لعبه المعاني ↞ العبه الشهيره*
+*⋄⤂لعبه المحيبس ↞ اكتب البات*
+*⋄⤂لعبه البحث ↞ اكتب التخمين*
+*⋄⤂لعبه اسرع شخص ↞ اكتب الاسرع*
+*⋄⤂لعبه المطابقه ↞ اكتب السمايلات*
+*⋄⤂لعبه الذكاء ↞ اكتب المختلف*
+*⋄⤂لعبه الارقام ↞ اكتب الرياضيات*
+*⋄⤂لعبه الترجمه ↞ اكتب الانكليزي*
+*⋄⤂لعبه التصحيح ↞ اكتب الامثله*
+*⋄⤂لعبه عكس الكلمات ↞ اكتب العكس*
+*⋄⤂لعبه التفكير ↞اكتب الحزوره*
+*⋄⤂لعبه الشهيره ↞ اكتب معاني*
 *ٴ— — — — — — — — — — — — — —*
 [- MeRo TeAm .](t.me/YYYDR)
 ]]
 send(msg.chat_id_, msg.id_,Text_Games)
 end
 
-if text == 'السمايلات' or text == 'سمايل' then
+if text == 'سمايلات' then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -56,13 +56,13 @@ end
 end
 if text == ''..(database:get(bot_id..'Random:Sm'..msg.chat_id_) or '')..'' and not database:get(bot_id..'Set:Sma'..msg.chat_id_) then
 if not database:get(bot_id..'Set:Sma'..msg.chat_id_) then
-send(msg.chat_id_, msg.id_,'*⋄︙الف مبروك لقد فزت*\n*⋄︙للعب مره اخره ارسل »{ سمايل , سمايلات }*')
+send(msg.chat_id_, msg.id_,'*⋄︙الف مبروك لقد فزت*\n*⋄︙للعب مره اخره ارسل »{ سمايلات }*')
 database:incrby(bot_id..'NUM:GAMES'..msg.chat_id_..msg.sender_user_id_, 1)
 end
 database:set(bot_id..'Set:Sma'..msg.chat_id_,true)
 return false
 end
-if text == 'اسرع' or text == 'الاسرع' or text == 'ترتيب' then
+if text == 'الاسرع' then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -124,13 +124,13 @@ end
 ------------------------------------------------------------------------
 if text == ''..(database:get(bot_id..'Klam:Speed'..msg.chat_id_) or '')..'' and not database:get(bot_id..'Speed:Tr'..msg.chat_id_) then
 if not database:get(bot_id..'Speed:Tr'..msg.chat_id_) then
-send(msg.chat_id_, msg.id_,'*⋄︙الف مبروك لقد فزت*\n*⋄︙للعب مره اخره ارسل »{ الاسرع , ترتيب }*')
+send(msg.chat_id_, msg.id_,'*⋄︙الف مبروك لقد فزت*\n*⋄︙للعب مره اخره ارسل »{ الاسرع }*')
 database:incrby(bot_id..'NUM:GAMES'..msg.chat_id_..msg.sender_user_id_, 1)
 end
 database:set(bot_id..'Speed:Tr'..msg.chat_id_,true)
 end
 
-if text == 'الحزوره' or text == 'حزوره' then
+if text == 'حزوره' then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -191,7 +191,7 @@ end
 database:set(bot_id..'Set:Hzora'..msg.chat_id_,true)
 end
 
-if text == 'المعاني' or text == 'معاني' then
+if text == 'معاني' then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -243,7 +243,7 @@ database:incrby(bot_id..'NUM:GAMES'..msg.chat_id_..msg.sender_user_id_, 1)
 end
 database:set(bot_id..'Set:Maany'..msg.chat_id_,true)
 end
-if text == 'العكس' or text == 'عكس' then
+if text == 'العكس' then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -356,7 +356,7 @@ end
 end
 end
 end
-if text == 'خمن' or text == 'التخمين' then
+if text == 'تخمين' then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -393,7 +393,7 @@ end
 end
 end
 
-if text == 'محيبس' or text == 'البات' then
+if text == 'بات' then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -420,7 +420,7 @@ end
 end
 
 ------------------------------------------------------------------------
-if text == 'المختلف' or text == 'مختلف' then
+if text == 'المختلف' then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -475,7 +475,7 @@ end
 database:set(bot_id..'Set:Moktlf:Bot'..msg.chat_id_,true)
 end
 ------------------------------------------------------------------------
-if text == 'الرياضيات' or text == 'رياضيات' then
+if text == 'الرياضيات' then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -511,13 +511,13 @@ end
 if text == ''..(database:get(bot_id..':Set:Ryadeat'..msg.chat_id_) or '')..'' then
 if not database:get(bot_id..'Set:Ryadeat:Bot'..msg.chat_id_) then
 database:del(bot_id..':Set:Ryadeat'..msg.chat_id_)
-send(msg.chat_id_, msg.id_,'*⋄︙الف مبروك لقد فزت*\n*⋄︙للعب مره اخره ارسل »{ رياضيات }*')
+send(msg.chat_id_, msg.id_,'*⋄︙الف مبروك لقد فزت*\n*⋄︙للعب مره اخره ارسل »{ الرياضيات }*')
 database:incrby(bot_id..'NUM:GAMES'..msg.chat_id_..msg.sender_user_id_, 1)
 end
 database:set(bot_id..'Set:Ryadeat:Bot'..msg.chat_id_,true)
 end
 ------------------------------------------------------------------------
-if text == 'انكليزي' or text == 'الانكليزي' then
+if text == 'الانكليزي' then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -606,13 +606,13 @@ end
 if text == ''..(database:get(bot_id..':Set:English'..msg.chat_id_) or '')..'' then
 if not database:get(bot_id..'Set:English:Bot'..msg.chat_id_) then
 database:del(bot_id..':Set:English'..msg.chat_id_)
-send(msg.chat_id_, msg.id_,'*⋄︙الف مبروك لقد فزت*\n*⋄︙للعب مره اخره ارسل »{ `انكليزي` }*')
+send(msg.chat_id_, msg.id_,'*⋄︙الف مبروك لقد فزت*\n*⋄︙للعب مره اخره ارسل »{ `الانكليزي` }*')
 database:incrby(bot_id..'NUM:GAMES'..msg.chat_id_..msg.sender_user_id_, 1)
 end
 database:set(bot_id..'Set:English:Bot'..msg.chat_id_,true)
 end
 ------------------------------------------------------------------------
-if text == 'امثله' or text == 'الامثله' then
+if text == 'امثله' then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
