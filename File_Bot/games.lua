@@ -19,7 +19,8 @@ Text_Games = [[
 *⋄⤂لعبه التصحيح ↞ اكتب امثله*
 *⋄⤂لعبه عكس الكلمات ↞ اكتب العكس*
 *⋄⤂لعبه التفكير ↞اكتب حزوره*
-*⋄⤂لعبه الشهيره ↞ اكتب معاني*
+*⋄⤂لعبه معاني لسمايلات ↞ اكتب معاني*
+*⋄⤂لعبه الروليت الشهيره ↞ اكتب روليت*
 *ٴ— — — — — — — — — — — — — —*
 [- MeRo TeAm .](t.me/YYYDR)
 ]]
@@ -552,6 +553,66 @@ send(msg.chat_id_, msg.id_,'*⋄︙الف مبروك لقد فزت*\n*⋄︙لل
 database:incrby(bot_id..'NUM:GAMES'..msg.chat_id_..msg.sender_user_id_, 1)
 end
 database:set(bot_id..'Set:Amth:Bot'..msg.chat_id_,true)
+end
+------------------------------------------------------------------------
+if text:match('^(@[%a%d_]+)$') and database:get(bot_id..":Number_Add:"..msg.chat_id_..msg.sender_user_id_) then
+if database:sismember(bot_id..':List_Rolet:'..msg.chat_id_,text) then
+send(msg.chat_id_,msg.id_,"المعرف ["..text.." ] موجود اساساً")
+return false
+end 
+database:sadd(bot_id..':List_Rolet:'..msg.chat_id_,text)
+local CountAdd = database:get(bot_id..":Number_Add:"..msg.chat_id_..msg.sender_user_id_)
+local CountAll = database:scard(bot_id..':List_Rolet:'..msg.chat_id_)
+local CountUser = CountAdd - CountAll
+if tonumber(CountAll) == tonumber(CountAdd) then 
+database:del(bot_id..":Number_Add:"..msg.chat_id_..msg.sender_user_id_) 
+database:setex(bot_id..":Witting_StartGame:"..msg.chat_id_..msg.sender_user_id_,1400,true)  
+send(msg.chat_id_,msg.id_,"تم حفظ المعرف (["..text.."])\n\nتم اكمال العدد الكلي\n\nارسل (نعم) للبدء.")
+return false
+end  
+send(msg.chat_id_,msg.id_,"تم حفظ المعرف (["..text.."])\nتبقى *"..CountUser.."* لاعبين ليكتمل العدد\nارسل المعرف التالي")
+return false
+end 
+if text and text:match("^(%d+)$") and database:get(bot_id..":Start_Rolet:"..msg.chat_id_..msg.sender_user_id_) then
+if text == "1" then
+send(msg.chat_id_, msg.id_," لا استطيع بدء اللعبه بلاعب واحد فقط")
+elseif text ~= "1" then
+database:set(bot_id..":Number_Add:"..msg.chat_id_..msg.sender_user_id_,text)  
+database:del(bot_id..":Start_Rolet:"..msg.chat_id_..msg.sender_user_id_)  
+send(msg.chat_id_, msg.id_,"قم  بأرسال معرفات اللاعبين الان")
+return false
+end
+end 
+if text == 'روليت' then
+database:del(bot_id..":Number_Add:"..msg.chat_id_..msg.sender_user_id_) 
+database:del(bot_id..':List_Rolet:'..msg.chat_id_)  
+database:setex(bot_id..":Start_Rolet:"..msg.chat_id_..msg.sender_user_id_,3600,true)  
+send(msg.chat_id_, msg.id_, 'ارسل عدد اللاعبين للروليت .')
+end
+if text == 'نعم' and database:get(bot_id..":Witting_StartGame:"..msg.chat_id_..msg.sender_user_id_) then
+local list = database:smembers(bot_id..':List_Rolet:'..msg.chat_id_) 
+if #list == 1 then 
+send(msg.chat_id_, msg.id_,  "لم يكتمل العدد الكلي للاعبين ." )
+elseif #list == 0 then 
+send(msg.chat_id_, msg.id_, "عذرا لم تقوم باضافه اي لاعب ." )
+return false
+end 
+local UserName = list[math.random(#list)]
+database:del(bot_id..':List_Rolet:'..msg.chat_id_) 
+database:del(bot_id..":Witting_StartGame:"..msg.chat_id_..msg.sender_user_id_)
+send(msg.chat_id_, msg.id_, 'الفائز '..UserName)
+return false
+end 
+if text == 'الاعبين' then
+local list = database:smembers(bot_id..':List_Rolet:'..msg.chat_id_) 
+local Text = '\n*ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*\n' 
+if #list == 0 then 
+send(msg.chat_id_, msg.id_,'لا يوجد لاعبين هنا ')
+end 
+for k, v in pairs(list) do 
+Text = Text..k.."•  » [" ..v.."] »\n"  
+end 
+send(msg.chat_id_, msg.id_, Text)
 end
 if text == 'تعطيل الالعاب' and Manager(msg) then
 if database:get(bot_id..'Lock:Games'..msg.chat_id_)  then
