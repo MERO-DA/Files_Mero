@@ -24,7 +24,7 @@ Text_Games = [[
 *⋄⤂لعبه معاني لسمايلات ↞ اكتب معاني*
 *⋄⤂لعبه الروليت الشهيره ↞ اكتب روليت*
 *ٴ— — — — — — — — — — — — — —*
-[- MeRo TeAm .](t.me/YYYDR)
+[- RaTer TeAm .](t.me/tttttuiopk)
 ]]
 send(msg.chat_id_, msg.id_,Text_Games) 
 end
